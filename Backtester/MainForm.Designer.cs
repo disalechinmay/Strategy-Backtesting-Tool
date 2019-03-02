@@ -75,7 +75,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Azure;
             this.splitContainer1.Panel1.Controls.Add(this.exitButton);
             this.splitContainer1.Panel1.Controls.Add(this.manageDataSourceButton);
             this.splitContainer1.Panel1.Controls.Add(this.bactestButton);
@@ -281,6 +281,7 @@
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "TP Percentage : ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
