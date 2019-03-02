@@ -31,6 +31,8 @@ namespace Backtester
 
             chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
+            chart2.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
+            chart2.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
 
             dataPointsLabel.MaximumSize = new Size(splitContainer1.Panel2.Width - addIndicatorButton.Width - 50, splitContainer1.Panel2.Height - chart1.Height);
 
@@ -224,8 +226,8 @@ namespace Backtester
                 float tradeInitPrice = 0.00f;
                 int tradedQty = 0;
                 float initialCapital = 100000.00f;
-                float takeProfit = 2.00f;
-                float stopLoss = 1.00f;
+                float takeProfit = float.Parse(TPTextBox.Text);
+                float stopLoss = float.Parse(SLTextBox.Text);
 
                 for(int i = 100; i < dataSource.Count; i++)
                 {
@@ -245,15 +247,13 @@ namespace Backtester
 
                         tradeInitPrice = dataSource[i][dataSourceColumns.IndexOf("Close")];
                         
-                        tradedQty = int.Parse(initialCapital.ToString()) / int.Parse(dataSource[i][dataSourceColumns.IndexOf("Close")].ToString());
+                        tradedQty = (int)Math.Floor( double.Parse(initialCapital.ToString()) / double.Parse(dataSource[i][dataSourceColumns.IndexOf("Close")].ToString()) );
                     }
 
 
                     // If a trade is already open, check if stop loss or take profit was hit
-
-                    // Check TP or SL was hit or not in a LONG trade
-                    
-                    if(inTrade && tradeDirection == "LONG" && (dataSource[i][dataSourceColumns.IndexOf("Close")] >= (tradeInitPrice + (tradeInitPrice * (takeProfit / 100.00))))
+                    // Check TP or SL was hit or not in a LONG trade                   
+                    if(inTrade && tradeDirection == "LONG" && (dataSource[i][dataSourceColumns.IndexOf("Close")] >= (tradeInitPrice + (tradeInitPrice * (takeProfit / 100.00)))))
                     {
                         inTrade = false;
 
@@ -267,16 +267,76 @@ namespace Backtester
                     {
                         inTrade = false;
 
-                        float loss = ((float.Parse(tradedQty.ToString()) * (tradeInitPrice - (tradeInitPrice * (stopLoss / 100.00f)))) - ((float.Parse(tradedQty.ToString()) * tradeInitPrice)
+                        float loss = ((float.Parse(tradedQty.ToString()) * (tradeInitPrice - (tradeInitPrice * (stopLoss / 100.00f)))) - ((float.Parse(tradedQty.ToString()) * tradeInitPrice)));
 
                         initialCapital = initialCapital + loss;
                         capitalCurve.Add(initialCapital);
                         PnL.Add(loss);
                     }
-                    
 
+                    // Check TP or SL was hit or not in a SHORT trade
+                    if (inTrade && tradeDirection == "SHORT" && (dataSource[i][dataSourceColumns.IndexOf("Close")] <= (tradeInitPrice - (tradeInitPrice * (takeProfit / 100.00)))))
+                    {
+                        inTrade = false;
 
+                        float profit = ((float.Parse(tradedQty.ToString()) * tradeInitPrice) - ((float.Parse(tradedQty.ToString()) * (tradeInitPrice - (tradeInitPrice * (takeProfit / 100.00f))))));
+
+                        initialCapital = initialCapital + profit;
+                        capitalCurve.Add(initialCapital);
+                        PnL.Add(profit);
+                    }
+                    else if (inTrade && tradeDirection == "SHORT" && (dataSource[i][dataSourceColumns.IndexOf("Close")] >= (tradeInitPrice + (tradeInitPrice * (stopLoss / 100.00f)))))
+                    {
+                        inTrade = false;
+
+                        float loss = ((float.Parse(tradedQty.ToString()) * tradeInitPrice) - ((float.Parse(tradedQty.ToString()) * (tradeInitPrice + (tradeInitPrice * (stopLoss / 100.00f))))));
+
+                        initialCapital = initialCapital + loss;
+                        capitalCurve.Add(initialCapital);
+                        PnL.Add(loss);
+                    }
                 }
+
+                // Calculating total number of trades taken, along with their distribution
+                int correctTrades = 0, incorrectTrades = 0, totalTrades = 0;
+                foreach(float val in PnL)
+                {
+                    totalTrades++;
+                    if (val > 0.0f)
+                        correctTrades++;
+                    else
+                        incorrectTrades++;
+                }
+
+                Series series = new Series("Capital curve");
+                series.Points.DataBindY(capitalCurve);
+
+                chart2.Series.RemoveAt(0);
+                chart2.Series.Add(series);
+                chart2.Series[0].ChartType = SeriesChartType.Area;
+
+                // Re-scaling the chart to crop right to the data
+                chart2.ChartAreas[0].AxisY.Maximum = Math.Ceiling(capitalCurve.Max());
+                chart2.ChartAreas[0].AxisY.Minimum = Math.Floor(capitalCurve.Min());
+
+                // Calculating drawdown
+                float highest = capitalCurve[0];
+                List<float> drawDowns = new List<float>();
+
+                foreach(float curr in capitalCurve)
+                {
+                    if (curr >= highest)
+                        highest = curr;
+                    else if (curr < highest)
+                        drawDowns.Add((highest - curr) / highest);
+                }
+
+                float maxDrawdown = drawDowns[0];
+
+                foreach (float currDrawdown in drawDowns)
+                    if (currDrawdown > maxDrawdown)
+                        maxDrawdown = currDrawdown;
+
             }
         }
 
@@ -315,6 +375,10 @@ namespace Backtester
 
             chart2.Visible = true;
             startBacktestButton.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            TPTextBox.Visible = true;
+            SLTextBox.Visible = true;
         }
 
         public void hideManageDataSourcePage()
@@ -336,7 +400,10 @@ namespace Backtester
         {
             chart2.Visible = false;
             startBacktestButton.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            TPTextBox.Visible = false;
+            SLTextBox.Visible = false;
         }
-
     }
 }

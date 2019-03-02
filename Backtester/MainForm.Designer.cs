@@ -28,34 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.openDataSourceDialog = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.exitButton = new System.Windows.Forms.Button();
             this.manageDataSourceButton = new System.Windows.Forms.Button();
             this.bactestButton = new System.Windows.Forms.Button();
             this.createStrategyButton = new System.Windows.Forms.Button();
+            this.startBacktestButton = new System.Windows.Forms.Button();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.loadStrategyButton = new System.Windows.Forms.Button();
+            this.saveStrategyButton = new System.Windows.Forms.Button();
             this.compileStrategyButton = new System.Windows.Forms.Button();
             this.codeRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.addIndicatorButton = new System.Windows.Forms.Button();
             this.dataPointsLabel = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.saveStrategyButton = new System.Windows.Forms.Button();
-            this.loadStrategyButton = new System.Windows.Forms.Button();
+            this.addIndicatorButton = new System.Windows.Forms.Button();
             this.saveStrategyDialog = new System.Windows.Forms.SaveFileDialog();
             this.loadStrategyDialog = new System.Windows.Forms.OpenFileDialog();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.startBacktestButton = new System.Windows.Forms.Button();
+            this.SLTextBox = new System.Windows.Forms.TextBox();
+            this.TPTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // openDataSourceDialog
@@ -80,6 +84,10 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.TPTextBox);
+            this.splitContainer1.Panel2.Controls.Add(this.SLTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.startBacktestButton);
             this.splitContainer1.Panel2.Controls.Add(this.chart2);
             this.splitContainer1.Panel2.Controls.Add(this.loadStrategyButton);
@@ -133,6 +141,53 @@
             this.createStrategyButton.UseVisualStyleBackColor = true;
             this.createStrategyButton.Click += new System.EventHandler(this.createStrategyButton_Click);
             // 
+            // startBacktestButton
+            // 
+            this.startBacktestButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.startBacktestButton.Location = new System.Drawing.Point(368, 35);
+            this.startBacktestButton.Name = "startBacktestButton";
+            this.startBacktestButton.Size = new System.Drawing.Size(121, 23);
+            this.startBacktestButton.TabIndex = 8;
+            this.startBacktestButton.Text = "Start Backtest";
+            this.startBacktestButton.UseVisualStyleBackColor = true;
+            this.startBacktestButton.Click += new System.EventHandler(this.startBacktestButton_Click);
+            // 
+            // chart2
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.chart2.Location = new System.Drawing.Point(0, -375);
+            this.chart2.Name = "chart2";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Name = "Series1";
+            this.chart2.Series.Add(series3);
+            this.chart2.Size = new System.Drawing.Size(501, 430);
+            this.chart2.TabIndex = 7;
+            this.chart2.Text = "chart2";
+            // 
+            // loadStrategyButton
+            // 
+            this.loadStrategyButton.Location = new System.Drawing.Point(309, 6);
+            this.loadStrategyButton.Name = "loadStrategyButton";
+            this.loadStrategyButton.Size = new System.Drawing.Size(87, 23);
+            this.loadStrategyButton.TabIndex = 6;
+            this.loadStrategyButton.Text = "Load Strategy";
+            this.loadStrategyButton.UseVisualStyleBackColor = true;
+            this.loadStrategyButton.Click += new System.EventHandler(this.loadStrategyButton_Click);
+            // 
+            // saveStrategyButton
+            // 
+            this.saveStrategyButton.Location = new System.Drawing.Point(402, 6);
+            this.saveStrategyButton.Name = "saveStrategyButton";
+            this.saveStrategyButton.Size = new System.Drawing.Size(87, 23);
+            this.saveStrategyButton.TabIndex = 5;
+            this.saveStrategyButton.Text = "Save Strategy";
+            this.saveStrategyButton.UseVisualStyleBackColor = true;
+            this.saveStrategyButton.Click += new System.EventHandler(this.saveStrategyButton_Click);
+            // 
             // compileStrategyButton
             // 
             this.compileStrategyButton.Location = new System.Drawing.Point(409, 33);
@@ -152,17 +207,6 @@
             this.codeRichTextBox.Size = new System.Drawing.Size(495, 409);
             this.codeRichTextBox.TabIndex = 3;
             this.codeRichTextBox.Text = "";
-            // 
-            // addIndicatorButton
-            // 
-            this.addIndicatorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addIndicatorButton.Location = new System.Drawing.Point(340, 26);
-            this.addIndicatorButton.Name = "addIndicatorButton";
-            this.addIndicatorButton.Size = new System.Drawing.Size(149, 23);
-            this.addIndicatorButton.TabIndex = 2;
-            this.addIndicatorButton.Text = "Add technical indicators";
-            this.addIndicatorButton.UseVisualStyleBackColor = true;
-            this.addIndicatorButton.Click += new System.EventHandler(this.addIndicatorButton_Click);
             // 
             // dataPointsLabel
             // 
@@ -195,25 +239,16 @@
             this.chart1.Text = "chart1";
             this.chart1.Visible = false;
             // 
-            // saveStrategyButton
+            // addIndicatorButton
             // 
-            this.saveStrategyButton.Location = new System.Drawing.Point(402, 6);
-            this.saveStrategyButton.Name = "saveStrategyButton";
-            this.saveStrategyButton.Size = new System.Drawing.Size(87, 23);
-            this.saveStrategyButton.TabIndex = 5;
-            this.saveStrategyButton.Text = "Save Strategy";
-            this.saveStrategyButton.UseVisualStyleBackColor = true;
-            this.saveStrategyButton.Click += new System.EventHandler(this.saveStrategyButton_Click);
-            // 
-            // loadStrategyButton
-            // 
-            this.loadStrategyButton.Location = new System.Drawing.Point(309, 6);
-            this.loadStrategyButton.Name = "loadStrategyButton";
-            this.loadStrategyButton.Size = new System.Drawing.Size(87, 23);
-            this.loadStrategyButton.TabIndex = 6;
-            this.loadStrategyButton.Text = "Load Strategy";
-            this.loadStrategyButton.UseVisualStyleBackColor = true;
-            this.loadStrategyButton.Click += new System.EventHandler(this.loadStrategyButton_Click);
+            this.addIndicatorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addIndicatorButton.Location = new System.Drawing.Point(340, 26);
+            this.addIndicatorButton.Name = "addIndicatorButton";
+            this.addIndicatorButton.Size = new System.Drawing.Size(149, 23);
+            this.addIndicatorButton.TabIndex = 2;
+            this.addIndicatorButton.Text = "Add technical indicators";
+            this.addIndicatorButton.UseVisualStyleBackColor = true;
+            this.addIndicatorButton.Click += new System.EventHandler(this.addIndicatorButton_Click);
             // 
             // saveStrategyDialog
             // 
@@ -224,31 +259,37 @@
             this.loadStrategyDialog.FileName = "openFileDialog1";
             this.loadStrategyDialog.Filter = "Strategy Files|*.st";
             // 
-            // chart2
+            // SLTextBox
             // 
-            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            this.chart2.Location = new System.Drawing.Point(3, 62);
-            this.chart2.Name = "chart2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "Series1";
-            this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(495, 430);
-            this.chart2.TabIndex = 7;
-            this.chart2.Text = "chart2";
+            this.SLTextBox.Location = new System.Drawing.Point(280, 38);
+            this.SLTextBox.Name = "SLTextBox";
+            this.SLTextBox.Size = new System.Drawing.Size(69, 20);
+            this.SLTextBox.TabIndex = 9;
             // 
-            // startBacktestButton
+            // TPTextBox
             // 
-            this.startBacktestButton.Location = new System.Drawing.Point(368, 35);
-            this.startBacktestButton.Name = "startBacktestButton";
-            this.startBacktestButton.Size = new System.Drawing.Size(121, 23);
-            this.startBacktestButton.TabIndex = 8;
-            this.startBacktestButton.Text = "Start Backtest";
-            this.startBacktestButton.UseVisualStyleBackColor = true;
-            this.startBacktestButton.Click += new System.EventHandler(this.startBacktestButton_Click);
+            this.TPTextBox.Location = new System.Drawing.Point(97, 38);
+            this.TPTextBox.Name = "TPTextBox";
+            this.TPTextBox.Size = new System.Drawing.Size(69, 20);
+            this.TPTextBox.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "TP Percentage : ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(187, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "SL Percentage : ";
             // 
             // MainForm
             // 
@@ -266,8 +307,8 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,6 +331,10 @@
         private System.Windows.Forms.OpenFileDialog loadStrategyDialog;
         private System.Windows.Forms.Button startBacktestButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TPTextBox;
+        private System.Windows.Forms.TextBox SLTextBox;
     }
 }
 
