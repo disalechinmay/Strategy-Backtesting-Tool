@@ -28,6 +28,7 @@ namespace Backtester
 
             splitContainer1.FixedPanel = FixedPanel.Panel1;
             splitContainer1.SplitterDistance = 170;
+            splitContainer1.IsSplitterFixed = true;
 
             chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
             chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
@@ -35,6 +36,8 @@ namespace Backtester
             chart2.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
 
             dataPointsLabel.MaximumSize = new Size(splitContainer1.Panel2.Width - addIndicatorButton.Width - 50, splitContainer1.Panel2.Height - chart1.Height);
+            
+            chart3.Legends.RemoveAt(0);
 
             // Visibilities
             hideManageDataSourcePage();
@@ -308,6 +311,14 @@ namespace Backtester
                         incorrectTrades++;
                 }
 
+                chart3.Series.RemoveAt(0);
+                Series pie = new Series("Pie chart");
+                pie.Points.AddXY("Correct trades : " + correctTrades.ToString(), correctTrades);
+                pie.Points.AddXY("Incorrect trades : " + incorrectTrades.ToString(), incorrectTrades);
+
+                chart3.Series.Add(pie);
+                chart3.Series[0].ChartType = SeriesChartType.Pie;
+
                 Series series = new Series("Capital curve");
                 series.Points.DataBindY(capitalCurve);
 
@@ -337,6 +348,7 @@ namespace Backtester
                     if (currDrawdown > maxDrawdown)
                         maxDrawdown = currDrawdown;
 
+                maxDrawDownLabel.Text = ( (Math.Floor((maxDrawdown * 100.00f)) * 100.00f) / 100.00f).ToString() + " %";
             }
         }
 
@@ -355,6 +367,10 @@ namespace Backtester
             dataPointsLabel.Visible = true;
             addIndicatorButton.Visible = true;
             chart1.Visible = true;
+
+            dataPointsLabel.BringToFront();
+            addIndicatorButton.BringToFront();
+            chart1.BringToFront();
         }
 
         public void showCreateStrategyPage()
@@ -366,6 +382,11 @@ namespace Backtester
             codeRichTextBox.Visible = true;
             loadStrategyButton.Visible = true;
             saveStrategyButton.Visible = true;
+
+            compileStrategyButton.BringToFront();
+            codeRichTextBox.BringToFront();
+            loadStrategyButton.BringToFront();
+            saveStrategyButton.BringToFront();
         }
 
         public void showBacktestPage()
@@ -379,6 +400,19 @@ namespace Backtester
             label2.Visible = true;
             TPTextBox.Visible = true;
             SLTextBox.Visible = true;
+            chart3.Visible = true;
+            label3.Visible = true;
+            maxDrawDownLabel.Visible = true;
+
+            chart2.BringToFront();
+            startBacktestButton.BringToFront();
+            label1.BringToFront();
+            label2.BringToFront();
+            TPTextBox.BringToFront();
+            SLTextBox.BringToFront();
+            chart3.BringToFront();
+            label3.BringToFront();
+            maxDrawDownLabel.BringToFront();
         }
 
         public void hideManageDataSourcePage()
@@ -404,6 +438,9 @@ namespace Backtester
             label2.Visible = false;
             TPTextBox.Visible = false;
             SLTextBox.Visible = false;
+            chart3.Visible = false;
+            label3.Visible = false;
+            maxDrawDownLabel.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)

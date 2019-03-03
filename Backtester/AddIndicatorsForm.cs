@@ -86,7 +86,7 @@ namespace Backtester
                     if (selectedItem == "Simple Moving Average")
                     {
                         generateSimpleMovingAverage(period, targetAttribute);
-                        MessageBox.Show("REACHED");
+                        //MessageBox.Show("REACHED");
                         this.DialogResult = DialogResult.OK;
                         //this.Close();                       
                     }
