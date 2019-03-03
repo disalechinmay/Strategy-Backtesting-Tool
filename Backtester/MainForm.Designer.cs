@@ -36,6 +36,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.openDataSourceDialog = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.exitButton = new System.Windows.Forms.Button();
@@ -62,6 +63,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.maxDrawDownLabel = new System.Windows.Forms.Label();
+            this.saveDataSource = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +98,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.saveDataSource);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
@@ -412,6 +415,20 @@
             this.maxDrawDownLabel.Text = "maxDrawdown";
             this.maxDrawDownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // saveDataSource
+            // 
+            this.saveDataSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveDataSource.ForeColor = System.Drawing.Color.Transparent;
+            this.saveDataSource.Image = ((System.Drawing.Image)(resources.GetObject("saveDataSource.Image")));
+            this.saveDataSource.Location = new System.Drawing.Point(300, 26);
+            this.saveDataSource.Name = "saveDataSource";
+            this.saveDataSource.Size = new System.Drawing.Size(34, 23);
+            this.saveDataSource.TabIndex = 16;
+            this.saveDataSource.UseVisualStyleBackColor = true;
+            this.saveDataSource.Click += new System.EventHandler(this.saveDataSource_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,6 +482,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label maxDrawDownLabel;
+        private System.Windows.Forms.Button saveDataSource;
     }
 }
 

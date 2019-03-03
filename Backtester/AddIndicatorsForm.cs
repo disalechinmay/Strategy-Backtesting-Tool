@@ -132,9 +132,10 @@ namespace Backtester
                 dataSourceColumns.Add("SMA" + period.ToString());
                 
                 int totalAttributes = dataSourceColumns.Count;
+                //MessageBox.Show(totalAttributes.ToString());
                 for (int i = 0; i < dataSource.Count; i++)
                 {
-                    float[] temp = new float[totalAttributes + 1];
+                    float[] temp = new float[totalAttributes];
                     int index = 0;
 
                     foreach(float val in dataSource[i])

@@ -8,6 +8,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.Reflection;
+using System.Text;
+using CsvHelper;
 
 namespace Backtester
 {
@@ -56,73 +58,76 @@ namespace Backtester
         {
             showManageDataSourcePage();
 
-            if(openDataSourceDialog.ShowDialog() == DialogResult.OK)
+            if (filePath == null)
             {
-                // Open the specified .csv file and load into dataSource and dataSourceColumns
-                filePath = openDataSourceDialog.FileName;
-
-                StreamReader reader = new StreamReader(filePath);
-                dataSource = new List<float[]>();
-                dataSourceColumns = new List<string>();
-
-                // Reading from the selected .csv file
-                while (!reader.EndOfStream)
+                if (openDataSourceDialog.ShowDialog() == DialogResult.OK)
                 {
-                    try
-                    {
-                        string line = reader.ReadLine();
+                    // Open the specified .csv file and load into dataSource and dataSourceColumns
+                    filePath = openDataSourceDialog.FileName;
 
-                        string[] splitLine = line.Split(',');
+                    dataSource = new List<float[]>();
+                    dataSourceColumns = new List<string>();
+
+                    // Reading from the selected .csv file
+                    TextReader tr = File.OpenText(filePath);
+                    CsvParser parser = new CsvParser(tr);
+                    while(true)
+                    {
+                        string[] row = parser.Read();
+                        if (row == null)
+                            break;
 
                         if (dataSourceColumns.Count == 0)
                         {
-                            foreach (string val in splitLine)
-                                dataSourceColumns.Add(val);                            
+                            foreach (string val in row)
+                                dataSourceColumns.Add(val);
                         }
                         else
                         {
-                            float[] currentTuple = new float[splitLine.Length];
-                            int currentIndex = 0;
+                            float[] temp = new float[dataSourceColumns.Count];
+                            int index1 = 0;
 
-                            foreach (string val in splitLine)
-                                currentTuple[currentIndex++] = float.Parse(val);
+                            foreach (string val in row)
+                            {
+                                if (val.IndexOf(",") >= 0)
+                                    temp[index1++] = float.Parse(val.Replace(',', ' '));
+                                else
+                                    temp[index1++] = float.Parse(val);
+                            }
 
-                            dataSource.Add(currentTuple);
+                            dataSource.Add(temp);
                         }
+
                     }
-                    catch(Exception exception)
-                    {
-                        MessageBox.Show("Invalid csv file format!" + exception.Message);
-                    }
+
+                    noOfColumns = dataSource[0].Length;
+                    //MessageBox.Show(noOfColumns.ToString());
+
+                    // Creating series for input to charts
+                    float[] close = new float[dataSource.Count];
+                    int index = 0;
+                    foreach (float[] set in dataSource)
+                        close[index++] = set[3];
+
+                    Series data = new Series("Stock price");
+                    data.Points.DataBindY(close);
+
+                    chart1.Series.RemoveAt(0);
+                    chart1.Series.Add(data);
+
+                    // Re-scaling the chart to crop right to the data
+                    chart1.ChartAreas[0].AxisY.Maximum = Math.Ceiling(close.Max());
+                    chart1.ChartAreas[0].AxisY.Minimum = Math.Floor(close.Min());
+
+                    dataPointsLabel.Text = "Data points present in current data : ";
+                    foreach (string val in dataSourceColumns)
+                        dataPointsLabel.Text += val + ", ";
+
+                    dataPointsLabel.Visible = true;
+                    chart1.Visible = true;
+                    addIndicatorButton.Visible = true;
                 }
-
-                noOfColumns = dataSource[0].Length;
-
-                // Creating series for input to charts
-                float[] close = new float[dataSource.Count];
-                int index = 0;
-                foreach (float[] set in dataSource)
-                    close[index++] = set[3];
-
-                Series data = new Series("Stock price");
-                data.Points.DataBindY(close);
-
-                chart1.Series.RemoveAt(0);
-                chart1.Series.Add(data);
-
-                // Re-scaling the chart to crop right to the data
-                chart1.ChartAreas[0].AxisY.Maximum = Math.Ceiling(close.Max());
-                chart1.ChartAreas[0].AxisY.Minimum = Math.Floor(close.Min());
-
-                dataPointsLabel.Text = "Data points present in current data : ";
-                foreach (string val in dataSourceColumns)
-                    dataPointsLabel.Text += val + ", ";
-                
-                dataPointsLabel.Visible = true;
-                chart1.Visible = true;
-                addIndicatorButton.Visible = true;
             }
-
         }
 
         // Event handler : Reacts to form resize
@@ -134,8 +139,8 @@ namespace Backtester
         private void addIndicatorButton_Click(object sender, EventArgs e)
         {
             AddIndicatorsForm form = new AddIndicatorsForm(dataSource, dataSourceColumns);
-            
-            if(form.ShowDialog() == DialogResult.OK)
+
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 this.dataSource = form.dataSource;
                 this.dataSourceColumns = form.dataSourceColumns;
@@ -144,7 +149,6 @@ namespace Backtester
                 foreach (string val in dataSourceColumns)
                     dataPointsLabel.Text += val + ", ";                
             }
-            
         }
 
         private void createStrategyButton_Click(object sender, EventArgs e)
@@ -367,10 +371,12 @@ namespace Backtester
             dataPointsLabel.Visible = true;
             addIndicatorButton.Visible = true;
             chart1.Visible = true;
+            saveDataSource.Visible = true;
 
             dataPointsLabel.BringToFront();
             addIndicatorButton.BringToFront();
             chart1.BringToFront();
+            saveDataSource.BringToFront();
         }
 
         public void showCreateStrategyPage()
@@ -420,6 +426,7 @@ namespace Backtester
             dataPointsLabel.Visible = false;
             addIndicatorButton.Visible = false;
             chart1.Visible = false;
+            saveDataSource.Visible = false;
         }
 
         public void hideCreateStrategyPage()
@@ -446,6 +453,35 @@ namespace Backtester
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void saveDataSource_Click(object sender, EventArgs e)
+        {
+            StringBuilder str = new StringBuilder();
+
+            for(int i = 0; i < dataSourceColumns.Count; i++)
+            {
+                if (i != dataSourceColumns.Count - 1)
+                    str.Append("\"" + dataSourceColumns[i] + "\",");
+                else
+                    str.Append("\"" + dataSourceColumns[i] + "\"\n");
+
+            }
+            //MessageBox.Show(stringToWrite.ToString());
+
+            for (int i = 0; i < dataSource.Count; i++)
+            {
+                for (int j = 0; j < dataSource[i].Length; j++)
+                {
+                    if (j != dataSource[i].Length - 1)
+                        str.Append("\"" + dataSource[i][j].ToString() + "\",");
+                    else
+                        str.Append("\"" + dataSource[i][j].ToString() + "\"\n");
+
+                }
+            }
+            File.WriteAllText(filePath, str.ToString());
+            //codeRichTextBox.Text = str.ToString();
         }
     }
 }
