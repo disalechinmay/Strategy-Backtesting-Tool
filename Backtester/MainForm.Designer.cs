@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.openDataSourceDialog = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -43,6 +43,13 @@
             this.manageDataSourceButton = new System.Windows.Forms.Button();
             this.bactestButton = new System.Windows.Forms.Button();
             this.createStrategyButton = new System.Windows.Forms.Button();
+            this.saveDataSource = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.maxDrawDownLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TPTextBox = new System.Windows.Forms.TextBox();
@@ -53,26 +60,24 @@
             this.compileStrategyButton = new System.Windows.Forms.Button();
             this.dataPointsLabel = new System.Windows.Forms.Label();
             this.addIndicatorButton = new System.Windows.Forms.Button();
-            this.codeRichTextBox = new System.Windows.Forms.RichTextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.saveStrategyDialog = new System.Windows.Forms.SaveFileDialog();
             this.loadStrategyDialog = new System.Windows.Forms.OpenFileDialog();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.maxDrawDownLabel = new System.Windows.Forms.Label();
-            this.saveDataSource = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pnlLabel = new System.Windows.Forms.Label();
+            this.scintillaPanel = new System.Windows.Forms.Panel();
+            this.newDataSourceButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openDataSourceDialog
@@ -98,6 +103,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.newDataSourceButton);
+            this.splitContainer1.Panel2.Controls.Add(this.scintillaPanel);
             this.splitContainer1.Panel2.Controls.Add(this.saveDataSource);
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
@@ -110,7 +117,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.compileStrategyButton);
             this.splitContainer1.Panel2.Controls.Add(this.dataPointsLabel);
             this.splitContainer1.Panel2.Controls.Add(this.addIndicatorButton);
-            this.splitContainer1.Panel2.Controls.Add(this.codeRichTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.chart1);
             this.splitContainer1.Size = new System.Drawing.Size(757, 492);
             this.splitContainer1.SplitterDistance = 252;
@@ -186,6 +192,113 @@
             this.createStrategyButton.UseVisualStyleBackColor = true;
             this.createStrategyButton.Click += new System.EventHandler(this.createStrategyButton_Click);
             // 
+            // saveDataSource
+            // 
+            this.saveDataSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveDataSource.ForeColor = System.Drawing.Color.Transparent;
+            this.saveDataSource.Image = ((System.Drawing.Image)(resources.GetObject("saveDataSource.Image")));
+            this.saveDataSource.Location = new System.Drawing.Point(464, 4);
+            this.saveDataSource.Name = "saveDataSource";
+            this.saveDataSource.Size = new System.Drawing.Size(34, 23);
+            this.saveDataSource.TabIndex = 16;
+            this.saveDataSource.UseVisualStyleBackColor = true;
+            this.saveDataSource.Click += new System.EventHandler(this.saveDataSource_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.chart2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chart3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 2, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 62);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(501, 409);
+            this.tableLayoutPanel1.TabIndex = 15;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // chart2
+            // 
+            chartArea11.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea11);
+            this.tableLayoutPanel1.SetColumnSpan(this.chart2, 3);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chart2.Location = new System.Drawing.Point(3, 3);
+            this.chart2.Name = "chart2";
+            series11.ChartArea = "ChartArea1";
+            series11.Name = "Series1";
+            this.chart2.Series.Add(series11);
+            this.chart2.Size = new System.Drawing.Size(495, 375);
+            this.chart2.TabIndex = 14;
+            this.chart2.Text = "chart2";
+            // 
+            // chart3
+            // 
+            chartArea12.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea12);
+            legend8.Name = "Legend1";
+            this.chart3.Legends.Add(legend8);
+            this.chart3.Location = new System.Drawing.Point(3, 384);
+            this.chart3.Name = "chart3";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.chart3.Series.Add(series12);
+            this.chart3.Size = new System.Drawing.Size(160, 158);
+            this.chart3.TabIndex = 15;
+            this.chart3.Text = "chart3";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.maxDrawDownLabel, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(169, 384);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.2807F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.7193F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 248);
+            this.tableLayoutPanel2.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(154, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Max Drawdown";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // maxDrawDownLabel
+            // 
+            this.maxDrawDownLabel.AutoSize = true;
+            this.maxDrawDownLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.maxDrawDownLabel.Font = new System.Drawing.Font("Monotype Corsiva", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxDrawDownLabel.Location = new System.Drawing.Point(3, 30);
+            this.maxDrawDownLabel.Name = "maxDrawDownLabel";
+            this.maxDrawDownLabel.Size = new System.Drawing.Size(154, 218);
+            this.maxDrawDownLabel.TabIndex = 1;
+            this.maxDrawDownLabel.Text = "maxDrawdown";
+            this.maxDrawDownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -211,6 +324,7 @@
             this.TPTextBox.Name = "TPTextBox";
             this.TPTextBox.Size = new System.Drawing.Size(69, 20);
             this.TPTextBox.TabIndex = 10;
+            this.TPTextBox.Leave += new System.EventHandler(this.TPTextBox_Leave);
             // 
             // SLTextBox
             // 
@@ -218,6 +332,7 @@
             this.SLTextBox.Name = "SLTextBox";
             this.SLTextBox.Size = new System.Drawing.Size(69, 20);
             this.SLTextBox.TabIndex = 9;
+            this.SLTextBox.Leave += new System.EventHandler(this.SLTextBox_Leave);
             // 
             // startBacktestButton
             // 
@@ -229,9 +344,11 @@
             this.startBacktestButton.Text = "Start Backtest";
             this.startBacktestButton.UseVisualStyleBackColor = true;
             this.startBacktestButton.Click += new System.EventHandler(this.startBacktestButton_Click);
+            this.startBacktestButton.Leave += new System.EventHandler(this.startBacktestButton_Leave);
             // 
             // loadStrategyButton
             // 
+            this.loadStrategyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.loadStrategyButton.Location = new System.Drawing.Point(309, 6);
             this.loadStrategyButton.Name = "loadStrategyButton";
             this.loadStrategyButton.Size = new System.Drawing.Size(87, 23);
@@ -242,6 +359,7 @@
             // 
             // saveStrategyButton
             // 
+            this.saveStrategyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.saveStrategyButton.Location = new System.Drawing.Point(402, 6);
             this.saveStrategyButton.Name = "saveStrategyButton";
             this.saveStrategyButton.Size = new System.Drawing.Size(87, 23);
@@ -252,6 +370,7 @@
             // 
             // compileStrategyButton
             // 
+            this.compileStrategyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.compileStrategyButton.Location = new System.Drawing.Point(409, 33);
             this.compileStrategyButton.Name = "compileStrategyButton";
             this.compileStrategyButton.Size = new System.Drawing.Size(80, 23);
@@ -282,34 +401,22 @@
             this.addIndicatorButton.UseVisualStyleBackColor = true;
             this.addIndicatorButton.Click += new System.EventHandler(this.addIndicatorButton_Click);
             // 
-            // codeRichTextBox
-            // 
-            this.codeRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.codeRichTextBox.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codeRichTextBox.Location = new System.Drawing.Point(-6, 62);
-            this.codeRichTextBox.Name = "codeRichTextBox";
-            this.codeRichTextBox.Size = new System.Drawing.Size(507, 409);
-            this.codeRichTextBox.TabIndex = 3;
-            this.codeRichTextBox.Text = "";
-            // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea10.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea10);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend7.Enabled = false;
+            legend7.Name = "Legend1";
+            this.chart1.Legends.Add(legend7);
             this.chart1.Location = new System.Drawing.Point(0, 55);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series3);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            series10.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series10);
             this.chart1.Size = new System.Drawing.Size(501, 437);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -324,110 +431,67 @@
             this.loadStrategyDialog.FileName = "openFileDialog1";
             this.loadStrategyDialog.Filter = "Strategy Files|*.st";
             // 
-            // chart2
+            // tableLayoutPanel3
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            this.tableLayoutPanel1.SetColumnSpan(this.chart2, 2);
-            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart2.Location = new System.Drawing.Point(3, 3);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(495, 239);
-            this.chart2.TabIndex = 14;
-            this.chart2.Text = "chart2";
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.pnlLabel, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(335, 384);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.48987F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.51013F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(163, 248);
+            this.tableLayoutPanel3.TabIndex = 17;
             // 
-            // tableLayoutPanel1
+            // label4
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(157, 26);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Profit / Loss";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlLabel
+            // 
+            this.pnlLabel.AutoSize = true;
+            this.pnlLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLabel.Font = new System.Drawing.Font("Monotype Corsiva", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlLabel.Location = new System.Drawing.Point(3, 26);
+            this.pnlLabel.Name = "pnlLabel";
+            this.pnlLabel.Size = new System.Drawing.Size(157, 222);
+            this.pnlLabel.TabIndex = 1;
+            this.pnlLabel.Text = "PnL";
+            this.pnlLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // scintillaPanel
+            // 
+            this.scintillaPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.chart2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chart3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 62);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(501, 409);
-            this.tableLayoutPanel1.TabIndex = 15;
+            this.scintillaPanel.Location = new System.Drawing.Point(0, 57);
+            this.scintillaPanel.Name = "scintillaPanel";
+            this.scintillaPanel.Size = new System.Drawing.Size(489, 394);
+            this.scintillaPanel.TabIndex = 17;
             // 
-            // chart3
+            // newDataSourceButton
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea2);
-            legend1.Name = "Legend1";
-            this.chart3.Legends.Add(legend1);
-            this.chart3.Location = new System.Drawing.Point(3, 248);
-            this.chart3.Name = "chart3";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart3.Series.Add(series2);
-            this.chart3.Size = new System.Drawing.Size(244, 158);
-            this.chart3.TabIndex = 15;
-            this.chart3.Text = "chart3";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.maxDrawDownLabel, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(253, 248);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.2807F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.7193F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(245, 158);
-            this.tableLayoutPanel2.TabIndex = 16;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(239, 19);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Max Drawdown";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // maxDrawDownLabel
-            // 
-            this.maxDrawDownLabel.AutoSize = true;
-            this.maxDrawDownLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maxDrawDownLabel.Font = new System.Drawing.Font("Monotype Corsiva", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maxDrawDownLabel.Location = new System.Drawing.Point(3, 19);
-            this.maxDrawDownLabel.Name = "maxDrawDownLabel";
-            this.maxDrawDownLabel.Size = new System.Drawing.Size(239, 139);
-            this.maxDrawDownLabel.TabIndex = 1;
-            this.maxDrawDownLabel.Text = "maxDrawdown";
-            this.maxDrawDownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // saveDataSource
-            // 
-            this.saveDataSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveDataSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveDataSource.ForeColor = System.Drawing.Color.Transparent;
-            this.saveDataSource.Image = ((System.Drawing.Image)(resources.GetObject("saveDataSource.Image")));
-            this.saveDataSource.Location = new System.Drawing.Point(300, 26);
-            this.saveDataSource.Name = "saveDataSource";
-            this.saveDataSource.Size = new System.Drawing.Size(34, 23);
-            this.saveDataSource.TabIndex = 16;
-            this.saveDataSource.UseVisualStyleBackColor = true;
-            this.saveDataSource.Click += new System.EventHandler(this.saveDataSource_Click);
+            this.newDataSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.newDataSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newDataSourceButton.ForeColor = System.Drawing.Color.Transparent;
+            this.newDataSourceButton.Image = ((System.Drawing.Image)(resources.GetObject("newDataSourceButton.Image")));
+            this.newDataSourceButton.Location = new System.Drawing.Point(426, 4);
+            this.newDataSourceButton.Name = "newDataSourceButton";
+            this.newDataSourceButton.Size = new System.Drawing.Size(32, 23);
+            this.newDataSourceButton.TabIndex = 18;
+            this.newDataSourceButton.UseVisualStyleBackColor = true;
+            this.newDataSourceButton.Click += new System.EventHandler(this.newDataSourceButton_Click);
             // 
             // MainForm
             // 
@@ -445,12 +509,14 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -465,7 +531,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label dataPointsLabel;
         private System.Windows.Forms.Button addIndicatorButton;
-        private System.Windows.Forms.RichTextBox codeRichTextBox;
         private System.Windows.Forms.Button compileStrategyButton;
         private System.Windows.Forms.Button loadStrategyButton;
         private System.Windows.Forms.Button saveStrategyButton;
@@ -483,6 +548,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label maxDrawDownLabel;
         private System.Windows.Forms.Button saveDataSource;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label pnlLabel;
+        private System.Windows.Forms.Panel scintillaPanel;
+        private System.Windows.Forms.Button newDataSourceButton;
     }
 }
 
